@@ -9,7 +9,7 @@ namespace ADSopdr4 {
         private int top;
         public Stack()       // constructor
         {
-            maxSize = 100;
+            maxSize = 1000;//TODO: need to make this variable
             stackArray = new Node[maxSize];
             top = -1;
         }
