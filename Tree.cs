@@ -51,9 +51,9 @@ namespace ADSopdr4 {
         }
 
         public void print() {
-            Console.WriteLine("   infix: "+root.getInfixStr());
-            Console.WriteLine(" postfix: " + root.getPostfixStr());
-            Console.WriteLine("  prefix: " + root.getPrefixStr());
+            Console.WriteLine("   Infix: "+root.getInfixStr());
+            Console.WriteLine(" Postfix: " + root.getPostfixStr());
+            Console.WriteLine("  Prefix: " + root.getPrefixStr());
         }
     }
 }

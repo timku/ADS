@@ -27,23 +27,6 @@ namespace ADSopdr4 {
             rc.setParent(this);
 
         }
-        /*
-        public Branch(Branch p) {
-            setParent(p);
-        }
-        public Branch(Branch lc,Branch rc) {
-            lc.setParent(this);
-            rc.setParent(this);
-            setLeftChild(lc);
-            setRightChild(rc);
-        }
-        public Branch(Branch p, Branch lc, Branch rc) {
-            setParent(p);
-            setLeftChild(lc);
-            setRightChild(rc);
-            lc.setParent(this);
-            rc.setParent(this);
-        }*/
         public void setData(char c) {
             this.data = c;
         }
@@ -72,17 +55,14 @@ namespace ADSopdr4 {
             }
         }
 
-
         public String getInfixStr() {
             String output = "";
-
             if (hasLeft()) {
                 output += "(" + leftChild.getInfixStr();
             }
             output += data;
             if (hasRight()) {
-                String temp = rightChild.getInfixStr();
-                output += temp+")";
+                output += rightChild.getInfixStr() + ")";
             }
 
             return output;
@@ -90,30 +70,23 @@ namespace ADSopdr4 {
 
         public String getPostfixStr() {
             String output = "";
-
             if (hasLeft()) {
-                String temp = leftChild.getPostfixStr();
-                output += temp + "";
+                output += leftChild.getPostfixStr();
             }
             if (hasRight()) {
-                String temp = rightChild.getPostfixStr();
-                output += temp + "";
+                output += rightChild.getPostfixStr();
             }
-
-            output += data;
-            return output;
+            return output+data;
         }
 
         public String getPrefixStr() {
-            String output = "";
-            output += data + "";
+            String output = data+"";
             if (hasLeft()) {
                 output += leftChild.getPrefixStr();
             }
             if (hasRight()) {
                 output += rightChild.getPrefixStr();
             }
-
             return output;
         }
     }
