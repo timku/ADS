@@ -5,25 +5,25 @@ using System.Text;
 namespace ADSopdr4 {
     class Stack {
         private int maxSize;
-        private Node[] stackArray;
+        private char[] stackArray;
         private int top;
-        public Stack()       // constructor
+        public Stack(int s)       // constructor
         {
-            maxSize = 1000;//TODO: need to make this variable
-            stackArray = new Node[maxSize];
+            maxSize = s;
+            stackArray = new char[maxSize];
             top = -1;
         }
-        public void push(Node j)  // put item on top of stack
+        public void push(char j)  // put item on top of stack
         { stackArray[++top] = j; }
-        public Node pop()         // take item from top of stack
+        public char pop()         // take item from top of stack
         { return stackArray[top--]; }
-        public Node peek()        // peek at top of stack
+        public char peek()        // peek at top of stack
         { return stackArray[top]; }
         public bool isEmpty()  // true if stack is empty
         { return (top == -1); }
         public int size()         // return size
         { return top + 1; }
-        public Node peekN(int n)  // return item at index n
+        public char peekN(int n)  // return item at index n
         { return stackArray[n]; }
 
         public void displayStack(String s) {

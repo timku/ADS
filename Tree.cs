@@ -1,218 +1,59 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace ADSopdr4 {
     class Tree {
-        private Node root;             // first node of tree
-        // -------------------------------------------------------------
-        public Tree()                  // constructor
-        { root = null; }            // no nodes in tree yet
-        // -------------------------------------------------------------
-        public Node find(int key)      // find node with given key
-        {                           // (assumes non-empty tree)
-            Node current = root;               // start at root
-            while (current.iData != key) {        // while no match,
-                if (key < current.iData)         // go left?
-                    current = current.leftChild;
-                else                            // or go right?
-                    current = current.rightChild;
-                if (current == null)             // if no child,
-                    return null;                 // didn’t find it
-            }
-            return current;                    // found it
-        }  // end find()
-        // -------------------------------------------------------------
-        public void insert(int id, double dd) {
-            Node newNode = new Node();    // make new node
-            newNode.iData = id;           // insert data
-            newNode.dData = dd;
-            if (root == null) {                // no node in root
-                root = newNode;
-            } else {                          // root occupied
-                Node current = root;       // start at root
-                Node parent;
-                while (true) {                // (exits internally)
-                    parent = current;
-                    if (id < current.iData) {  // go left?
-                        current = current.leftChild;
-                        if (current == null) {  // if end of the line,
-                            // insert on left
-                            parent.leftChild = newNode;
-                            return;
-                        }
-                        // end if go left
-                    } else {                    // or go right?
-
-                        current = current.rightChild;
-                        if (current == null) {  // if end of the line
-                            // insert on right
-                            parent.rightChild = newNode;
-                            return;
-                        }
-                    }  // end else go right
-                }  // end while
-            }  // end else not root
-        }  // end insert()
-        // -------------------------------------------------------------
-        public bool delete(int key) // delete node with given key
-        {                           // (assumes non-empty list)
-            Node current = root;
-            Node parent = root;
-            bool isLeftChild = true;
-            while (current.iData != key)        // search for node
-{
-                parent = current;
-                if (key < current.iData)         // go left?
-{
-                    isLeftChild = true;
-                    current = current.leftChild;
-                } else                            // or go right?
-{
-                    isLeftChild = false;
-                    current = current.rightChild;
-                }
-                if (current == null)             // end of the line,
-                    return false;                // didn’t find it
-            }  // end while
-            // found node to delete
-            // if no children, simply delete it
-            if (current.leftChild == null &&
-            current.rightChild == null) {
-                if (current == root)             // if root,
-                    root = null;                 // tree is empty
-                else if (isLeftChild)
-                    parent.leftChild = null;     // disconnect
-                else                            // from parent
-                    parent.rightChild = null;
-            }
-                // if no right child, replace with left subtree
-            else if (current.rightChild == null)
-                if (current == root)
-                    root = current.leftChild;
-                else if (isLeftChild)
-                    parent.leftChild = current.leftChild;
-                else
-                    parent.rightChild = current.leftChild;
-            // if no left child, replace with right subtree
-            else if (current.leftChild == null)
-                if (current == root)
-                    root = current.rightChild;
-                else if (isLeftChild)
-                    parent.leftChild = current.rightChild;
-                else
-                    parent.rightChild = current.rightChild;
-            else  // two children, so replace with inorder successor
-{
-                // get successor of node to delete (current)
-                Node successor = getSuccessor(current);
-                // connect parent of current to successor instead
-                if (current == root)
-                    root = successor;
-                else if (isLeftChild)
-                    parent.leftChild = successor;
-                else
-                    parent.rightChild = successor;
-                // connect successor to current’s left child
-                successor.leftChild = current.leftChild;
-            }  // end else two children
-            // (successor cannot have a left child)
-            return true;                                // success
-        }  // end delete()
-        // -------------------------------------------------------------
-        // returns node with next-highest value after delNode
-        // goes to right child, then right child’s left descendents
-        private Node getSuccessor(Node delNode) {
-            Node successorParent = delNode;
-            Node successor = delNode;
-            Node current = delNode.rightChild;   // go to right child
-            while (current != null)               // until no more
-{                                 // left children,
-                successorParent = successor;
-                successor = current;
-                current = current.leftChild;      // go to left child
-            }
-            // if successor not
-            if (successor != delNode.rightChild)  // right child,
-{                                 // make connections
-                successorParent.leftChild = successor.rightChild;
-                successor.rightChild = delNode.rightChild;
-            }
-            return successor;
+        private string postfix = "";
+        public void setPostfix(string p) {
+            postfix = p;
         }
-        // -------------------------------------------------------------
-        public void traverse(int traverseType) {
-            switch (traverseType) {
-                case 1: Console.Out.Write("\nPreorder traversal: ");
-                    preOrder(root);
-                    break;
-                case 2: Console.Out.Write("\nInorder traversal:  ");
-                    inOrder(root);
-                    break;
-                case 3: Console.Out.Write("\nPostorder traversal: ");
-                    postOrder(root);
-                    break;
-            }
-            Console.Out.WriteLine();
-        }
-        // -------------------------------------------------------------
-        private void preOrder(Node localRoot) {
-            if (localRoot != null) {
-                Console.Out.Write(localRoot.iData + " ");
-                preOrder(localRoot.leftChild);
-                preOrder(localRoot.rightChild);
-            }
-        }
-        // -------------------------------------------------------------
-        private void inOrder(Node localRoot) {
-            if (localRoot != null) {
-                inOrder(localRoot.leftChild);
-                Console.Out.Write(localRoot.iData + " ");
-                inOrder(localRoot.rightChild);
-            }
-        }
-        // -------------------------------------------------------------
-        private void postOrder(Node localRoot) {
-            if (localRoot != null) {
-                postOrder(localRoot.leftChild);
-                postOrder(localRoot.rightChild);
-                Console.Out.Write(localRoot.iData + " ");
-            }
-        }
-        // -------------------------------------------------------------
-        public void displayTree() {
-            Stack globalStack = new Stack();
-            globalStack.push(root);
-            int nBlanks = 32;
-            bool isRowEmpty = false;
-            Console.Out.WriteLine("......................................................");
-            while (isRowEmpty == false) {
-                Stack localStack = new Stack();
-                isRowEmpty = true;
-                for (int j = 0; j < nBlanks; j++)
-                    Console.Out.Write(" ");
-                while (globalStack.isEmpty() == false) {
-                    Node temp = (Node)globalStack.pop();
-                    if (temp != null) {
-                        Console.Out.Write(temp.iData);
-                        localStack.push(temp.leftChild);
-                        localStack.push(temp.rightChild);
-                        if (temp.leftChild != null ||
-                        temp.rightChild != null)
-                            isRowEmpty = false;
+        public Branch root = null;
+        public void buildTree() {
+            Branch current = null;
+            Stack stack = new Stack(20);
+            char ch;
+            char num1, num2;
+            bool waitingForOperator = false;
+            for (int i = 0; i < postfix.Length; i++) {
+                ch = postfix[i];
+                if (ch <= '9' && ch >= '0') {
+                    stack.push(ch);
+                } else if (ch == '+' || ch == '-' || ch == '/' || ch == '*' || ch == '^') {
+                    if (current == null) {
+                        //Construct the tree with ducktape, but im all out of tape.
+                        num2 = stack.pop();
+                        num1 = stack.pop();
+                        current = new Branch(ch, new Branch(num1), new Branch(num2));
                     } else {
-                        Console.Out.Write("--");
-                        localStack.push(null);
-                        localStack.push(null);
+                        Branch previous = current;
+                        current = new Branch(ch);
+                        if (waitingForOperator == true) {
+                            //yea we're basicly waiting for an operator...
+                            current.setRight(previous);
+                            current.setLeft(new Branch(stack.pop()));
+                            waitingForOperator = false;// Or maybe not?
+                        } else {
+                            //this guy is so cool, he kicks ass without an operator...
+                            current.setLeft(previous);
+                            current.setRight(new Branch(stack.pop()));
+                        }
                     }
-                    for (int j = 0; j < nBlanks * 2 - 2; j++)
-                        Console.Out.Write(" ");
-                }  // end while globalStack not empty
-                Console.Out.WriteLine();
-                nBlanks /= 2;
-                while (localStack.isEmpty() == false)
-                    globalStack.push(localStack.pop());
-            }  // end while isRowEmpty is false
-            Console.Out.WriteLine("......................................................");
-        }  // end displayTree()
-        // -------------------------------------------------------------
-    }  // end class Tree
+                    if (stack.size() > 0) {
+                        //yes we're waiting for an operator.
+                        waitingForOperator = true;
+                    }
+                } else {
+                    Console.WriteLine("Error char('" + ch + "') So wtf am I supposed to do with this?");
+                }
+            }
+            root = current;//set dominant branch to root.
+        }
+
+        public void print() {
+            Console.WriteLine("   infix: "+root.getInfixStr());
+            Console.WriteLine(" postfix: " + root.getPostfixStr());
+            Console.WriteLine("  prefix: " + root.getPrefixStr());
+        }
+    }
 }

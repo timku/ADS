@@ -40,12 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Node.cs" />
+    <Compile Include="Branch.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stack.cs" />
     <Compile Include="Tree.cs" />
-    <Compile Include="Tree_old.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
