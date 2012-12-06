@@ -4,11 +4,10 @@ using System.Text;
 
 namespace ADSopdr4 {
     class Branch {
-        public char data;
-
-        public Branch parent = null;
-        public Branch leftChild = null;         // this node’s left child
-        public Branch rightChild = null;        // this node’s right child
+        private char data;
+        private Branch parent = null;
+        private Branch leftChild = null;
+        private Branch rightChild = null;
 
         public Branch() {
         }
@@ -17,7 +16,7 @@ namespace ADSopdr4 {
         }
         public Branch(char c, Branch lc, Branch rc) {
             if (lc == null || rc == null) {
-                Console.WriteLine("OK WAT");
+                Console.WriteLine("WAT");
                 return;
             }
             this.setData(c);
@@ -39,6 +38,11 @@ namespace ADSopdr4 {
         public void setRight(Branch rc) {
             this.rightChild = rc;
         }
+
+        /// <summary>
+        /// Has a right child?
+        /// </summary>
+        /// <returns>true = yes I have a right child</returns>
         private bool hasRight() {
             if (this.rightChild == null) {
                 return false;
@@ -46,7 +50,10 @@ namespace ADSopdr4 {
                 return true;
             }
         }
-
+        /// <summary>
+        /// Has a left child?
+        /// </summary>
+        /// <returns>true = yes I have a left child</returns>
         private bool hasLeft() {
             if (this.leftChild == null) {
                 return false;
@@ -56,38 +63,40 @@ namespace ADSopdr4 {
         }
 
         public String getInfixStr() {
-            String output = "";
+            String str = "";
             if (hasLeft()) {
-                output += "(" + leftChild.getInfixStr();
+                str += "(" + leftChild.getInfixStr();
             }
-            output += data;
+            str += data;
             if (hasRight()) {
-                output += rightChild.getInfixStr() + ")";
+                str += rightChild.getInfixStr() + ")";
             }
 
-            return output;
+            return str;
         }
 
         public String getPostfixStr() {
-            String output = "";
+            String str = "";
             if (hasLeft()) {
-                output += leftChild.getPostfixStr();
+                str += leftChild.getPostfixStr();
             }
             if (hasRight()) {
-                output += rightChild.getPostfixStr();
+                str += rightChild.getPostfixStr();
             }
-            return output+data;
+            return str + data;
+            //return str+" "+data; (w/ spaces)
         }
 
         public String getPrefixStr() {
-            String output = data+"";
+            String str = "";
             if (hasLeft()) {
-                output += leftChild.getPrefixStr();
+                str += leftChild.getPrefixStr();
             }
             if (hasRight()) {
-                output += rightChild.getPrefixStr();
+                str += rightChild.getPrefixStr();
             }
-            return output;
+            return data + str;
+            //return data+" "+str;  (w/ spaces)
         }
     }
 }

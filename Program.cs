@@ -9,7 +9,7 @@ namespace ADSopdr4 {
             //int value;
             //so much help http://scriptasylum.com/tutorials/infix_postfix/infix_postfix.html
 
-            string postfix = "1234*+-5+";
+            string postfix = "12345*+-^6+";
             Console.WriteLine(" String is: " + postfix+"\r\n");
 
             Tree tree = new Tree();

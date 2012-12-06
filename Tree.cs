@@ -5,15 +5,22 @@ using System.Text;
 namespace ADSopdr4 {
     class Tree {
         private string postfix = "";
+        private Branch trunk = null;
+        /// <summary>
+        /// Setting postfix string
+        /// </summary>
+        /// <param name="p">postfix</param>
         public void setPostfix(string p) {
             postfix = p;
         }
-        public Branch root = null;
+        /// <summary>
+        /// Building a tree.
+        /// </summary>
         public void buildTree() {
+            if (postfix.Length < 1) { return; }
             Branch current = null;
-            Stack stack = new Stack(20);
+            Stack stack = new Stack(postfix.Length);
             char ch;
-            char num1, num2;
             bool waitingForOperator = false;
             for (int i = 0; i < postfix.Length; i++) {
                 ch = postfix[i];
@@ -22,8 +29,8 @@ namespace ADSopdr4 {
                 } else if (ch == '+' || ch == '-' || ch == '/' || ch == '*' || ch == '^') {
                     if (current == null) {
                         //Construct the tree with ducktape, but im all out of tape.
-                        num2 = stack.pop();
-                        num1 = stack.pop();
+                        char num2 = stack.pop();
+                        char num1 = stack.pop();
                         current = new Branch(ch, new Branch(num1), new Branch(num2));
                     } else {
                         Branch previous = current;
@@ -47,13 +54,19 @@ namespace ADSopdr4 {
                     Console.WriteLine("Error char('" + ch + "') So wtf am I supposed to do with this?");
                 }
             }
-            root = current;//set dominant branch to root.
+            trunk = current;//set dominant branch to root.
         }
-
+        /// <summary>
+        /// Print results
+        /// </summary>
         public void print() {
-            Console.WriteLine("   Infix: "+root.getInfixStr());
-            Console.WriteLine(" Postfix: " + root.getPostfixStr());
-            Console.WriteLine("  Prefix: " + root.getPrefixStr());
+            if (trunk == null) {
+                Console.WriteLine("418 I am not a tree");
+                return;
+            }
+            Console.WriteLine("   Infix: "+trunk.getInfixStr());
+            Console.WriteLine(" Postfix: " + trunk.getPostfixStr());
+            Console.WriteLine("  Prefix: " + trunk.getPrefixStr());
         }
     }
 }
