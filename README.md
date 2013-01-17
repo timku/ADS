@@ -1,9 +1,12 @@
 ADS - Practicum
 ------------------------------------------------------------------------------
-ADS1 - Random game world.
-ADS2 - Baby steps with a recursive method.
-ADS3 - Stack calculator with infix to postfix conversion.
-ADS4 - Expression tree.
+Practicum 1 - Random game world.
+
+Practicum 2 - Baby steps with a recursive method.
+
+Practicum 3 - Stack calculator with infix to postfix conversion.
+
+Practicum 4 - Expression tree.
 
 ------------------------------------------------------------------------------
 Copyright &copy; 2012 Tim Kuperus (spreadmaster.net)
