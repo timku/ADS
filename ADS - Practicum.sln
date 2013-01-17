@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADSopdr2", "opdr2\ADSopdr2.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADSopdr3", "opdr3\ADSopdr3.csproj", "{DD7EC1F6-C75E-493F-B4C1-07689C25E09A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADSopdr5", "opdr5\ADSopdr5.csproj", "{0462E0B8-B7D4-487B-A865-C06019AB1FA9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -31,6 +33,10 @@ Global
 		{DD7EC1F6-C75E-493F-B4C1-07689C25E09A}.Debug|x86.Build.0 = Debug|x86
 		{DD7EC1F6-C75E-493F-B4C1-07689C25E09A}.Release|x86.ActiveCfg = Release|x86
 		{DD7EC1F6-C75E-493F-B4C1-07689C25E09A}.Release|x86.Build.0 = Release|x86
+		{0462E0B8-B7D4-487B-A865-C06019AB1FA9}.Debug|x86.ActiveCfg = Debug|x86
+		{0462E0B8-B7D4-487B-A865-C06019AB1FA9}.Debug|x86.Build.0 = Debug|x86
+		{0462E0B8-B7D4-487B-A865-C06019AB1FA9}.Release|x86.ActiveCfg = Release|x86
+		{0462E0B8-B7D4-487B-A865-C06019AB1FA9}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

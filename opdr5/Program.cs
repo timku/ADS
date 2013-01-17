@@ -6,16 +6,9 @@ namespace ADSopdr5 {
     class Program {
         static void Main(string[] args) {
             showHeader();
-            //int value;
-            //so much help http://scriptasylum.com/tutorials/infix_postfix/infix_postfix.html
+            Console.WriteLine("\r\n Calculating...\r\n");
 
-            string postfix = "12345*+-^6+";
-            Console.WriteLine(" String is: " + postfix+"\r\n");
-
-            Tree tree = new Tree();
-            tree.setPostfix(postfix);
-            tree.buildTree();
-            tree.print();
+            Knight knight = new Knight(5);
             Console.WriteLine("\r\n     End of transmission\r\n       ~~~ bzzzzt ~~~");
             char choice = getChar();
         }  // end main()
@@ -36,7 +29,7 @@ namespace ADSopdr5 {
         }
         // -------------------------------------------------------------
         private static void showHeader() {
-            Console.WriteLine("           _____   _____   _  _\r\n     /\\   |  __ \\ / ____| | || |\r\n    /  \\  | |  | | (___   | || |_\r\n   / /\\ \\ | |  | |\\___ \\  |__   _|\r\n  / ____ \\| |__| |____) |    | |\r\n /_/    \\_\\_____/|_____/     |_|\r\n~~~~~~~~~~~ Tim Kuperus ~~~~~~~~~~~\r\n");
+            Console.WriteLine("           _____   _____ _____\r\n     /\\   |  __ \\ / ____| ____|\r\n    /  \\  | |  | | (___ | |__\r\n   / /\\ \\ | |  | |\\___ \\|___ \\\r\n  / ____ \\| |__| |____) |___) |\r\n /_/    \\_\\_____/|_____/|____/\r\n~~~~~~~~~~~ Tim Kuperus ~~~~~~~~~~~");
         }
     }  // end class TreeApp
 
