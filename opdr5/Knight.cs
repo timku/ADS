@@ -22,6 +22,7 @@ namespace ADSopdr5 {
             Console.WriteLine("Start pos(x: " + knightx + " y: " + knighty + ")");
             setKnightPos(knightx, knighty, 1);
             int foundPaths = 0;
+            DateTime start = DateTime.Now;
             while (stack.isEmpty() == false) {
                 if (stack.size() == (size * size)) {
                     foundPaths++;
@@ -33,7 +34,9 @@ namespace ADSopdr5 {
                     stepBack();
                 }
             }
-            Console.WriteLine("Paths: " + foundPaths);
+            DateTime end = DateTime.Now;
+            TimeSpan duration = end - start;
+            Console.WriteLine("Paths: " + foundPaths + " (time: " + duration.Milliseconds.ToString()+"ms)");
         }
         private int searchfrom = -1;
         private bool findMove() {

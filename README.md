@@ -8,6 +8,8 @@ Practicum 3 - Stack calculator with infix to postfix conversion.
 
 Practicum 4 - Expression tree.
 
+Practicum 5 - Knight's tour.
+
 ------------------------------------------------------------------------------
 Copyright &copy; 2012 Tim Kuperus (spreadmaster.net)
 
