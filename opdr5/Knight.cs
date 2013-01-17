@@ -18,7 +18,7 @@ namespace ADSopdr5 {
         public Knight(int size) {
             board = new Board(size);
             stack = new Stack(size * size);
-            knightx = knighty = 4;
+            knightx = knighty = 0;
             setKnightPos(knightx, knighty, 0);
             bool solved = false;
             int foundPaths = 0;
