@@ -4,9 +4,9 @@ using System.Text;
 
 namespace ADSopdr5 {
 
-    enum Movez {
+    /*enum Movez {
         Noordnoordoost, Oostnoordoost, Oostzuidoost, Zuidzuidoost, Zuidzuidwest, Westzuidwest, Westnoordwest, Noordnoordwest
-    };
+    };*/
 
 
     class Knight {
@@ -27,7 +27,7 @@ namespace ADSopdr5 {
                 if (stack.size() == (size * size)) {
                     foundPaths++;
                     if(foundPaths==1)
-                        board.displayBoard();
+                        board.display();
                 }
                 if (findMove() == false) {
                     //do a step back, but remember that you have been here.
@@ -36,7 +36,9 @@ namespace ADSopdr5 {
             }
             DateTime end = DateTime.Now;
             TimeSpan duration = end - start;
-            Console.WriteLine("Paths: " + foundPaths + " (time: " + duration.Milliseconds.ToString()+"ms)");
+            Console.WriteLine(String.Format("{0,15}{1,-15}",    "Time: ", duration.Milliseconds.ToString() + "ms"));
+            Console.WriteLine(String.Format("{0,15}{1,-15:N0}", "Paths: ", foundPaths));
+            Console.WriteLine(String.Format("{0,15}{1,-15:N0}", "Movements: ", moveNumber));
         }
         private int searchfrom = -1;
         private bool findMove() {
@@ -74,7 +76,7 @@ namespace ADSopdr5 {
             knighty = y;
             moveNumber++;
             //board.set(knightx, knighty, 8);
-            //board.displayBoard();
+            //board.display();
             board.set(knightx, knighty, stack.size());
             //Console.WriteLine("setMove" + String.Format("{0,4}", moveNumber) + ": " + fromDirection);
         }

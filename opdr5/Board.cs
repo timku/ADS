@@ -28,7 +28,7 @@ namespace ADSopdr5 {
         public int size()         // return size
         { return top + 1; }
 
-        public void displayBoard() {
+        public void display() {
             Console.Out.Write("");
             for (int y = 0; y < maxSize; y++) {
                 for (int x = 0; x < maxSize; x++) {
