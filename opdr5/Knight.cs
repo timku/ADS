@@ -18,25 +18,22 @@ namespace ADSopdr5 {
         public Knight(int size) {
             board = new Board(size);
             stack = new Stack(size * size);
-            knightx = knighty = 0;
-            setKnightPos(knightx, knighty, 0);
-            bool solved = false;
+            knightx = 0; knighty = 0;
+            Console.WriteLine("Start pos(x: " + knightx + " y: " + knighty + ")");
+            setKnightPos(knightx, knighty, 1);
             int foundPaths = 0;
-            while (solved == false) {
+            while (stack.isEmpty() == false) {
                 if (stack.size() == (size * size)) {
                     foundPaths++;
-                }
-                if (stack.isEmpty()) {
-                    Console.WriteLine("paths: "+foundPaths);
-                    solved = true; break;
+                    if(foundPaths==1)
+                        board.displayBoard();
                 }
                 if (findMove() == false) {
                     //do a step back, but remember that you have been here.
                     stepBack();
                 }
             }
-            Console.WriteLine("DONE: " + stack.size());
-            board.displayBoard();
+            Console.WriteLine("Paths: " + foundPaths);
         }
         private int searchfrom = -1;
         private bool findMove() {
@@ -60,9 +57,9 @@ namespace ADSopdr5 {
         private void stepBack() {
             board.set(knightx, knighty, 0);
             StackPart stackpart = stack.pop();
-            if (knightx == stackpart.getX() && knighty == stackpart.getY()) {
-                Console.WriteLine("ERROR: STEPBACK DIDN'T WORK!");
-            }
+            /*if (knightx == stackpart.getX() && knighty == stackpart.getY()) {
+                Console.WriteLine("ERROR: STEPBACK DIDN'T WORK!");//end
+            }*/
             knightx = stackpart.getX();
             knighty = stackpart.getY();
             searchfrom = stackpart.getDir();//next move.
