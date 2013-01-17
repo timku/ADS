@@ -1,9 +1,6 @@
-ADS - Practicum
+ADS - Opdracht 3
 ------------------------------------------------------------------------------
-ADS1 - Random game world.
-ADS2 - Baby steps with a recursive method.
-ADS3 - Stack calculator with infix to postfix conversion.
-ADS4 - Expression tree.
+Stack calculator with infix to postfix conversion.
 
 ------------------------------------------------------------------------------
 Copyright &copy; 2012 Tim Kuperus (spreadmaster.net)
@@ -25,6 +22,5 @@ freely, subject to the following restrictions:
        not be misrepresented as being the original software.
 
     3. This notice may not be removed or altered from any source distribution.
-
 STEALING THIS CODE WILL RESULT INTO INSTANT INJURY OR DEATH, USE AT YOUR OWN RISK!
 ------------------------------------------------------------------------------
