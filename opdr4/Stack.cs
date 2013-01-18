@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ADSopdr5 {
+namespace ADSopdr4 {
     class Stack {
         private int maxSize;
         private char[] stackArray;

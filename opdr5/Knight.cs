@@ -56,7 +56,7 @@ namespace ADSopdr5 {
                 }
             }
             //Console.WriteLine("ERROR 404: NO MOVES FOUND (" + moveNumber + ")");
-            //stack.displayStack();
+            //stack.display();
             return false;
         }
         private void stepBack() {

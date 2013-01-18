@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8437104B-99E1-4554-A17F-C9D9AB06BD5D}</ProjectGuid>
+    <ProjectGuid>{DC1E6E0F-DFC2-4D06-8E59-5E1306155E54}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ADSopdr4</RootNamespace>
-    <AssemblyName>ADSopdr4</AssemblyName>
+    <RootNamespace>ADSopdr6</RootNamespace>
+    <AssemblyName>ADSopdr6</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -40,11 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Branch.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Stack.cs" />
-    <Compile Include="Tree.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
