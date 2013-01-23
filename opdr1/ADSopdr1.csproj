@@ -8,8 +8,8 @@
     <ProjectGuid>{B74E5E13-249D-4C85-8118-3E36EE424423}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ADS_pract1</RootNamespace>
-    <AssemblyName>ADS_pract1</AssemblyName>
+    <RootNamespace>ADSopdr1</RootNamespace>
+    <AssemblyName>ADSopdr1</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>

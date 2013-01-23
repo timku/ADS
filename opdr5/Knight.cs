@@ -12,7 +12,8 @@ namespace ADSopdr5 {
     class Knight {
         private int[] moves = { 0, 1, 2, 3, 4, 5, 6, 7 };
         private Board board;
-        private int knightx = 0, knighty = 0, moveNumber = 0;
+        private int knightx = 0, knighty = 0;
+        private ulong moveNumber = 0;
         private Stack stack;
 
         public Knight(int size) {
@@ -21,13 +22,18 @@ namespace ADSopdr5 {
             knightx = 0; knighty = 0;
             Console.WriteLine("Start pos(x: " + knightx + " y: " + knighty + ")");
             setKnightPos(knightx, knighty, 1);
-            int foundPaths = 0;
+            ulong foundPaths = 0;
             DateTime start = DateTime.Now;
             while (stack.isEmpty() == false) {
                 if (stack.size() == (size * size)) {
                     foundPaths++;
-                    if(foundPaths==1)
+                    if (foundPaths == 1){
                         board.display();
+                        Console.Write("\r\n");
+                    }else{
+                        Console.SetCursorPosition(0, Console.CursorTop - 1);
+                        Console.Write("Found paths: " + foundPaths + "\r\n");
+                    }
                 }
                 if (findMove() == false) {
                     //do a step back, but remember that you have been here.
@@ -36,6 +42,7 @@ namespace ADSopdr5 {
             }
             DateTime end = DateTime.Now;
             TimeSpan duration = end - start;
+            Console.SetCursorPosition(0, Console.CursorTop - 1);
             Console.WriteLine(String.Format("{0,15}{1,-15}",    "Time: ", duration.Milliseconds.ToString() + "ms"));
             Console.WriteLine(String.Format("{0,15}{1,-15:N0}", "Paths: ", foundPaths));
             Console.WriteLine(String.Format("{0,15}{1,-15:N0}", "Movements: ", moveNumber));

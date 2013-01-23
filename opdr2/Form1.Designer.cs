@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1
+﻿namespace ADSopdr2
 {
     partial class Form1
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ADS_pract1 {
+namespace ADSopdr1{
     class Program {
         static Random random;
         static int xmax, ymax;

@@ -10,6 +10,8 @@ Practicum 4 - Expression tree.
 
 Practicum 5 - Knight's tour.
 
+Practicum 6 - Regular expression dutch telephone number.
+
 ------------------------------------------------------------------------------
 Copyright &copy; 2012 Tim Kuperus (spreadmaster.net)
 

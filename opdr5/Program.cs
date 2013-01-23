@@ -6,7 +6,7 @@ namespace ADSopdr5 {
     class Program {
         static void Main(string[] args) {
             showHeader();
-            Console.WriteLine("\r\n Calculating...\r\n");
+            Console.WriteLine("\r\n");
 
             Knight knight = new Knight(5);
             Console.WriteLine("\r\n     End of transmission\r\n       ~~~ bzzzzt ~~~");
